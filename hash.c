@@ -14,14 +14,14 @@ typedef struct hash_node {
 struct hash {
 	unsigned int buckets;//桶的个数
 	hashfunc_t hash_func;//哈希函数
-	hash_node_t **nodes;//哈希表中存放的链表地址
+	hash_node_t **nodes;//哈希表中存放的链表头地址
 };
 
 hash_node_t** hash_get_bucket(hash_t *hash, void *key);
 hash_node_t* hash_get_node_by_key(hash_t *hash, void *key, unsigned int key_size);
 
 
-///创建一个哈希表
+///创建一个哈希表,返回哈希表的指针
 hash_t *hash_alloc(unsigned int buckets, hashfunc_t hash_func)
 {
 	hash_t *hash = (hash_t *)malloc(sizeof(hash_t));
